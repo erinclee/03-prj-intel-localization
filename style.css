@@ -1,0 +1,383 @@
+/* Add your CSS here */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #0071c5, #004494);
+  min-height: 100vh;
+}
+
+/* RTL Support - Applied when body has rtl-layout class */
+body.rtl-layout {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl-layout .timeline-section {
+  direction: rtl;
+}
+
+body.rtl-layout .timeline-section div {
+  text-align: right;
+}
+
+body.rtl-layout .card-body {
+  text-align: right;
+}
+
+body.rtl-layout .btn {
+  direction: ltr; /* Keep buttons LTR for consistency */
+}
+
+/* Header / Hero Section */
+header {
+  background: linear-gradient(135deg, #0071c5, #004494);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle pattern overlay to header */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: 50px 50px;
+  opacity: 0.3;
+}
+
+header div {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Intel logo styling */
+header img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 30px;
+  filter: brightness(0) invert(1); /* Make logo white */
+}
+
+/* Main heading */
+header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Subheading description */
+header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* Timeline Section - Keep existing styles, just add specific class */
+.timeline-section {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  min-height: 80vh;
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Bonus: scroll snap effect */
+  scrollbar-width: thin;
+  scrollbar-color: #0071c5 #e9ecef;
+}
+
+/* Custom scrollbar for webkit browsers */
+.timeline-section::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-section::-webkit-scrollbar-track {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.timeline-section::-webkit-scrollbar-thumb {
+  background: #0071c5;
+  border-radius: 4px;
+}
+
+/* Timeline cards styling */
+.timeline-section div {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  min-width: 300px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  scroll-snap-align: start; /* Bonus: scroll snap effect */
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+/* Card hover effects - Bonus: CSS transforms */
+.timeline-section div:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,113,197,0.2);
+}
+
+/* Year styling (h2) */
+.timeline-section div h2 {
+  font-size: 2.5rem;
+  color: #0071c5;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Title styling (h3) */
+.timeline-section div h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Image styling */
+.timeline-section div img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.timeline-section div:hover img {
+  transform: scale(1.05);
+}
+
+/* Description text - hidden by default, shown on hover */
+.timeline-section div p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Show description on hover */
+.timeline-section div:hover p {
+  opacity: 1;
+  max-height: 200px;
+  margin-top: 15px;
+}
+
+/* Bottom instruction text */
+.instruction-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  font-style: italic;
+  background: #f8f9fa;
+  padding: 20px;
+  margin: 0;
+}
+
+/* NEW: Three-Column Section Styling */
+.three-column-section {
+  background: #f8f9fa;
+}
+
+.three-column-section .text-primary {
+  color: #0071c5 !important;
+}
+
+.three-column-section .card {
+  transition: all 0.3s ease;
+  border: none !important;
+}
+
+.three-column-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,113,197,0.15) !important;
+}
+
+.three-column-section .feature-icon {
+  transition: all 0.3s ease;
+}
+
+.three-column-section .card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+/* Enhanced button styling */
+.btn-outline-primary:hover,
+.btn-outline-info:hover,
+.btn-outline-success:hover {
+  transform: translateX(3px);
+}
+
+/* RTL button adjustment */
+body.rtl-layout .btn-outline-primary:hover,
+body.rtl-layout .btn-outline-info:hover,
+body.rtl-layout .btn-outline-success:hover {
+  transform: translateX(-3px);
+}
+
+/* NEW: Newsletter Section Styling */
+.newsletter-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.newsletter-form .form-control:focus {
+  border-color: #0071c5;
+  box-shadow: 0 0 0 0.2rem rgba(0,113,197,0.25);
+}
+
+.newsletter-form .btn-primary {
+  background-color: #0071c5;
+  border-color: #0071c5;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form .btn-primary:hover {
+  background-color: #004494;
+  border-color: #004494;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,113,197,0.3);
+}
+
+/* NEW: Footer Styling */
+footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+}
+
+footer a:hover {
+  color: #0071c5 !important;
+  transition: color 0.3s ease;
+}
+
+/* Responsive design - stack vertically on mobile */
+@media (max-width: 768px) {
+  /* Adjust header for mobile */
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+  }
+
+  header img {
+    width: 100px;
+  }
+
+  /* Switch timeline to vertical layout on mobile */
+  .timeline-section {
+    flex-direction: column;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding: 40px 20px;
+  }
+
+  .timeline-section div {
+    min-width: auto;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+  }
+
+  /* Always show description text on mobile */
+  .timeline-section div p {
+    opacity: 1;
+    max-height: none;
+    margin-top: 15px;
+  }
+
+  .instruction-text {
+    font-size: 1rem;
+  }
+
+  /* Newsletter form adjustments for mobile */
+  .newsletter-form .row.g-2 > .col-md-8,
+  .newsletter-form .row.g-2 > .col-md-4 {
+    margin-bottom: 10px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  header {
+    padding: 40px 15px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .timeline-section {
+    padding: 30px 15px;
+  }
+
+  .timeline-section div {
+    padding: 20px;
+  }
+
+  .timeline-section div h2 {
+    font-size: 2rem;
+  }
+
+  /* Stack newsletter form vertically on very small screens */
+  .newsletter-form .col-md-8,
+  .newsletter-form .col-md-4 {
+    margin-bottom: 15px;
+  }
+}
+
+/* High contrast mode support for accessibility */
+@media (prefers-contrast: high) {
+  .timeline-section div {
+    border: 2px solid #000;
+  }
+  
+  .card {
+    border: 2px solid #000 !important;
+  }
+  
+  .btn {
+    border-width: 2px !important;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-section div,
+  .card,
+  .btn,
+  .feature-icon {
+    transition: none !important;
+  }
+  
+  .timeline-section div:hover,
+  .card:hover {
+    transform: none !important;
+  }
+}
